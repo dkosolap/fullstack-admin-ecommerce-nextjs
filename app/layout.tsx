@@ -2,6 +2,7 @@ import { type Metadata } from "next";
 import { ClerkProvider, SignedIn, UserButton } from "@clerk/nextjs";
 import { Geist, Geist_Mono } from "next/font/google";
 
+import { ToasterProvider } from "@/providers/toast-provider";
 import { ModalProvider } from "@/providers/modal-provider";
 
 import "./globals.css";
@@ -37,6 +38,7 @@ export default function RootLayout({
               <UserButton />
             </SignedIn>
           </header>
+          <ToasterProvider />
           <ModalProvider />
           {children}
         </body>
