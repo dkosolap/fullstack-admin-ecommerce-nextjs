@@ -21,7 +21,6 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { redirect } from "next/navigation";
 
 const formSchema = z.object({
   name: z.string().min(3),
@@ -34,7 +33,7 @@ export const StoreModal: React.FC = () => {
 
   const [loading, setLoading] = useState(false);
 
-  const form = useForm<FormData>({
+  const formContext = useForm<FormData>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       name: "",
@@ -65,10 +64,10 @@ export const StoreModal: React.FC = () => {
     >
       <div>
         <div className="space-y-4 py-2 pb-4">
-          <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)}>
+          <Form {...formContext}>
+            <form onSubmit={formContext.handleSubmit(onSubmit)}>
               <FormField
-                control={form.control}
+                control={formContext.control}
                 name="name"
                 render={({ field }) => (
                   <FormItem>

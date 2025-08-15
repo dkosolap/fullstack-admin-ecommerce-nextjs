@@ -11,13 +11,21 @@ export const MainNav: React.FC<React.HTMLAttributes<HTMLElement>> = ({
 }) => {
   const pathname = usePathname();
   const params = useParams();
-  const routers = useMemo(() => ([
-    {
-      href: `/${params.storeId}/settings`,
-      label: 'Settings',
-      isActive: pathname === `/${params.storeId}/settings`,
-    }
-  ]), [params.storeId, pathname]);
+  const routers = useMemo(
+    () => [
+      {
+        href: `/${params.storeId}`,
+        label: "Store page",
+        isActive: pathname === `/${params.storeId}`,
+      },
+      {
+        href: `/${params.storeId}/settings`,
+        label: "Settings",
+        isActive: pathname === `/${params.storeId}/settings`,
+      },
+    ],
+    [params.storeId, pathname]
+  );
 
   return (
     <nav
