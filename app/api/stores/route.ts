@@ -11,7 +11,7 @@ export async function POST(req: Request) {
 
 
     if (!userId) {
-      return new NextResponse("Unauthorized", { status: 401 })
+      return new NextResponse("Unauthenticated", { status: 401 });
     }
 
     if (!userId) {

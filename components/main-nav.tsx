@@ -23,6 +23,11 @@ export const MainNav: React.FC<React.HTMLAttributes<HTMLElement>> = ({
         label: "Settings",
         isActive: pathname === `/${params.storeId}/settings`,
       },
+      {
+        href: `/${params.storeId}/billboards`,
+        label: "Billboards",
+        isActive: new RegExp(`^/${params.storeId}/billboards`).test(pathname),
+      },
     ],
     [params.storeId, pathname]
   );
