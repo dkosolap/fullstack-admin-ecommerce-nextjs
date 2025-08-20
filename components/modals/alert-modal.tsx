@@ -17,6 +17,11 @@ export const AlertModal: React.FC<AlertModalProps> = ({
 }) => {
   const [isMounted, setIsMounted] = useState(false);
 
+  const handleOnConfirm = async () => {
+    await onConfirm();
+    onClose();
+  };
+
   useEffect(() => {
     setIsMounted(true);
   }, []);
@@ -33,8 +38,16 @@ export const AlertModal: React.FC<AlertModalProps> = ({
       onClose={onClose}
     >
       <div className="pt-6 space-x-2 flex items-center justify-end w-full">
-        <Button disabled={loading} variant="outline" onClick={onClose}>Cancel</Button>
-        <Button disabled={loading} variant="destructive" onClick={onConfirm}>Confirm</Button>
+        <Button disabled={loading} variant="outline" onClick={onClose}>
+          Cancel
+        </Button>
+        <Button
+          disabled={loading}
+          variant="destructive"
+          onClick={handleOnConfirm}
+        >
+          Confirm
+        </Button>
       </div>
     </Modal>
   );

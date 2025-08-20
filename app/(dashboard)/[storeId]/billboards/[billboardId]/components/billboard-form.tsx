@@ -74,7 +74,7 @@ export const BillboardForm: React.FC<BillboardFormProps> = ({ initialData }) => 
       setLoading(true);
       await axios.delete(`/api/${params.storeId}/billboards/${params.billboardId}`);
       router.refresh();
-      router.push('/');
+      router.push(`/${params.storeId}/billboards`);
       toast.success("Billboard has been deleted!");
     } catch (error) {
       toast.error("Make sure you removed all categories using this billboard!");
@@ -93,18 +93,17 @@ export const BillboardForm: React.FC<BillboardFormProps> = ({ initialData }) => 
         loading={loading}
       />
       <div className="flex items-center justify-between">
-        <Heading
-          title={title}
-          description={description}
-        />
-        {initialData && (<Button
-          variant="destructive"
-          size="icon"
-          onClick={() => setOpen(true)}
-          disabled={loading}
-        >
-          <Trash className="h4 w-4" />
-        </Button>)}
+        <Heading title={title} description={description} />
+        {initialData && (
+          <Button
+            variant="destructive"
+            size="icon"
+            onClick={() => setOpen(true)}
+            disabled={loading}
+          >
+            <Trash className="h4 w-4" />
+          </Button>
+        )}
       </div>
       <Separator />
       <Form {...formContext}>
@@ -154,7 +153,6 @@ export const BillboardForm: React.FC<BillboardFormProps> = ({ initialData }) => 
           </Button>
         </form>
       </Form>
-      <Separator />
     </>
   );
 };
