@@ -25,7 +25,7 @@ export const CellAction: React.FC<CellActionProps> = ({
   const onCopy = async (textToCopy: string) => {
     if ('clipboard' in navigator) {
       await navigator.clipboard.writeText(textToCopy);
-      toast.success("API Route copied to the clipboard.");
+      toast.success("Billboard Id copied to the clipboard.");
     }
   };
 
@@ -79,7 +79,3 @@ export const CellAction: React.FC<CellActionProps> = ({
     </>
   );
 };
-function setLoading(arg0: boolean) {
-  throw new Error("Function not implemented.");
-}
-

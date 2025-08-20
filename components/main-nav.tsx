@@ -19,14 +19,19 @@ export const MainNav: React.FC<React.HTMLAttributes<HTMLElement>> = ({
         isActive: pathname === `/${params.storeId}`,
       },
       {
-        href: `/${params.storeId}/settings`,
-        label: "Settings",
-        isActive: pathname === `/${params.storeId}/settings`,
-      },
-      {
         href: `/${params.storeId}/billboards`,
         label: "Billboards",
         isActive: new RegExp(`^/${params.storeId}/billboards`).test(pathname),
+      },
+      {
+        href: `/${params.storeId}/categories`,
+        label: "Categories",
+        isActive: new RegExp(`^/${params.storeId}/categories`).test(pathname),
+      },
+      {
+        href: `/${params.storeId}/settings`,
+        label: "Settings",
+        isActive: pathname === `/${params.storeId}/settings`,
       },
     ],
     [params.storeId, pathname]
@@ -34,11 +39,18 @@ export const MainNav: React.FC<React.HTMLAttributes<HTMLElement>> = ({
 
   return (
     <nav
-      className={cn('flex items-center space-x-4 lg:space-x-6', className)}
+      className={cn("flex items-center space-x-4 lg:space-x-6", className)}
+      {...props}
     >
       {routers.map(({ label, isActive, href }) => (
-        <Link key={href} href={href} className={cn("text-sm font-medium transition-colors hover:text-primary", isActive ?
-          'text-black dark:text-white' : 'text-muted-foreground')}>
+        <Link
+          key={href}
+          href={href}
+          className={cn(
+            "text-sm font-medium transition-colors hover:text-primary",
+            isActive ? "text-black dark:text-white" : "text-muted-foreground"
+          )}
+        >
           {label}
         </Link>
       ))}
