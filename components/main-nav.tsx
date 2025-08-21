@@ -34,6 +34,11 @@ export const MainNav: React.FC<React.HTMLAttributes<HTMLElement>> = ({
         isActive: new RegExp(`^/${params.storeId}/sizes`).test(pathname),
       },
       {
+        href: `/${params.storeId}/colors`,
+        label: "Colors",
+        isActive: new RegExp(`^/${params.storeId}/colors`).test(pathname),
+      },
+      {
         href: `/${params.storeId}/settings`,
         label: "Settings",
         isActive: pathname === `/${params.storeId}/settings`,
